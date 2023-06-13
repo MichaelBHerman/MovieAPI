@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
-//making change//
 
 @Document(collection = "movies") //This annotation marks a class as being a domain object that we want to persist to the database: It also allows us to choose the name of the collection we want to use: (collection = "name")
 
@@ -27,6 +27,7 @@ public class Movie {
 
     private List<String> genres;
     private List<String> backdrop;
-
+    @DocumentReference //this will cause the database to only store the id of the reviews/ and the reviews will be in a separate collection
+    private List<Review> reviewIds;
 
 }
