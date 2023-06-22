@@ -1,6 +1,5 @@
 package dev.michael.movies;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +20,12 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
     @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies() {
+    public ResponseEntity<List<Movie>> getAllMovies() {  //any proper api should return a http status code
         return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable ObjectId id) {
-        return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(id), HttpStatus.OK);
+    @GetMapping("/{imdbId}")
+    public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable String imdbId) {  //optional must be used because it may return Null
+        return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(imdbId), HttpStatus.OK);
     }
 }

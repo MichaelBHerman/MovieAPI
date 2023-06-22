@@ -14,8 +14,8 @@ import java.util.List;
 
 
 @Data //from lombok, takes care of all getters/setters and toString methods
-@AllArgsConstructor //creating constructor that takes all private fields below as args
-@NoArgsConstructor //creates constructor that takes no args at all
+@AllArgsConstructor //creating constructor that takes all private fields below as args from lombok
+@NoArgsConstructor //creates constructor that takes no args at all from lombok
 public class Movie {
     @Id //lets framework know that this property should be treated as unique identifier for database
     private ObjectId id;

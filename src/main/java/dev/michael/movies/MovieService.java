@@ -14,9 +14,11 @@ public class MovieService {
     private MovieRepository movieRepository;
     public List<Movie> allMovies() {
         return movieRepository.findAll(); //returns list of datatype (Movie)
+        //findAll() is a method from crudRepository
     }
 
-    public Optional<Movie> singleMovie(ObjectId id) {
-        return movieRepository.findById(id);
+    public Optional<Movie> singleMovie(String imdbId) { //if the object id doesn't exist, it will return null which is why we need to use Optional
+        return movieRepository.findMovieByImdbId(imdbId);
+        //findById is a method from crudRepository
     }
 }
